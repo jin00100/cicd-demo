@@ -51,7 +51,8 @@ pipeline {
     post {
         always {
             echo '流水线结束。清理旧的镜像...'
-            sh '$DOCKER_CMD image prune -f'
+            sh 'docker image prune -f || true'
+
         }
     }
 }
