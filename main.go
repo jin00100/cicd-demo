@@ -1,10 +1,16 @@
 package main
-import "fmt"
-import "net/http"
+
+import (
+	"fmt"
+	"net/http"
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello Jenkins CI/CD!")
+}
 
 func main() {
-    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-        fmt.Fprintf(w, "Hello, CI/CD with Jenkins and Docker! V1.0")
-    })
-    http.ListenAndServe(":8080", nil)
+	http.HandleFunc("/", handler)
+	http.ListenAndServe(":8080", nil)
 }
+
